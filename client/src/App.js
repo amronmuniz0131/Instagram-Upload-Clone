@@ -1,21 +1,19 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Post from './Post';
 
+
 function App() {
-  const [posts, setPosts] = useState([
-    {
-      username: "hermsy",
-      caption: "waw",
-      imageUrl: "https://www.freecodecamp.org/news/content/images/size/w2000/2021/06/Ekran-Resmi-2019-11-18-18.08.13.png"
-    },
-    {
-      username: "amsy",
-      caption: "waw",
-      imageUrl: "https://www.freecodecamp.org/news/content/images/size/w2000/2021/06/Ekran-Resmi-2019-11-18-18.08.13.png"
-    }
-  ]);
-  
+  const [posts, setItem] = useState([]);
+  useEffect(()=>{
+    fetch("http://127.0.0.1:5500/server/api.php")
+    .then(res => res.json())
+    .then(
+      (result)=>{
+        console.log(result);
+      }
+    )
+  },[])
   return (
     <div className="App">
       <div className="app__header">
@@ -27,6 +25,7 @@ function App() {
           <Post username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
           )
       }
+      
 
     </div>
   );
