@@ -4,15 +4,18 @@ import Post from './Post';
 
 
 function App() {
-  const [posts, setItem] = useState([]);
+  const [posts, setPosts] = useState([]);
   useEffect(()=>{
-    fetch("http://127.0.0.1:5500/server/api.php")
+    fetch("http://localhost/api.php")
     .then(res => res.json())
     .then(
       (result)=>{
-        console.log(result);
+        setPosts(result);
       }
     )
+    .catch(err => {
+      console.log(err.message);
+    })
   },[])
   return (
     <div className="App">
@@ -21,8 +24,13 @@ function App() {
       </div>
       
       {
+
         posts.map(post =>
-          <Post username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
+          <Post username={post.username} 
+          caption={post.caption}
+           imageUrl={post.imageUrl}
+            comment_user={post.comment_user}
+             comment_content={post.comment_content}/>
           )
       }
       
