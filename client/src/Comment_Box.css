@@ -1,0 +1,9 @@
+.comment__box{
+    display: flex;
+    width: 100%;
+  }
+
+  .comment__container{
+    display: flex;
+    width: 100%;
+  }

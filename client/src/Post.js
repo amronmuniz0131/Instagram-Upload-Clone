@@ -1,23 +1,18 @@
 import React from 'react'
 import './Post.css';
 import Avatar from "@material-ui/core/Avatar";
+import Comment_Box from './Comment_Box';
 
-function Post({ username, caption, imageUrl, comment_user, comment, comment_content}) {  
-  const comments = comment_user.split(', ');
-  const comment_body = comment_content.split(',')
-  function comment_function(){
-     const comment_context = (comment_body.map(comment_contents => 
-    {return comment_contents}));
-    let x=0;
-    const comment = (comments.map(comment_usernames => 
-      {return <h4 className="post__text"><strong>{comment_usernames}:</strong> {comment_context[x]}</h4>})) ;
-    return ( 
-      //{comment},{comment_context}
-      <h4>{comment}</h4>
-      )
+function Post({post_id, username, caption, imageUrl, comment_user, comment, comment_content, comment_context}) {  
+  if (comment_user !== null){
+    const comments = comment_user.split(',');
+    const comment_body = comment_content.split(',')
+    comment_context = (comment_body.map(comment_contents =>
+    {return <h4 className="post__text"><strong>{comments[comment_body.indexOf(comment_contents)]}: </strong> {comment_contents}</h4>}))
   }
     return (
         <div className="post">
+          
           {/* profile picture + username*/}
           <div className="post__header">
             <Avatar
@@ -30,10 +25,15 @@ function Post({ username, caption, imageUrl, comment_user, comment, comment_cont
           {/* post */}
           <img className="post__image" src={imageUrl} alt=""/>
           {/* username + caption */}
-          <h4 className="post__text"><strong>{username}:</strong> {caption}</h4>
+          <h4 className="post__text"><strong>{username}</strong> {caption}</h4>
           {/*comment section*/}
-          <h4 className="post__text">{comment_function()}</h4>
+          {comment_context}
+          <div className="comment__container">
+            {/* eslint-disable-next-line */}
+          <Comment_Box post_id = {post_id}/>
+          </div>
         </div>
+        
     )
 }
 
