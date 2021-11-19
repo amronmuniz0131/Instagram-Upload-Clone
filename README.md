@@ -1,2 +1,2 @@
-# bittel_machine-problem
- Machine problem for application in Bittel
+# Instagram Clone
+ Imitates instagram upload using react and php
