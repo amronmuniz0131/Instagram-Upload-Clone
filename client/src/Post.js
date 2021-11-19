@@ -6,6 +6,7 @@ import Comment_Box from './Comment_Box';
 function Post({post_id, username, caption, imageUrl, comment_user, comment, comment_content, comment_context}) {  
   if (comment_user !== null){
     const comments = comment_user.split(',');
+    //console.log(caption);
     const comment_body = comment_content.split(',')
     comment_context = (comment_body.map(comment_contents =>
     {return <h4 className="post__text"><strong>{comments[comment_body.indexOf(comment_contents)]}: </strong> {comment_contents}</h4>}))

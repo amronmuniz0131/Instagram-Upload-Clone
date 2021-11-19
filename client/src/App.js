@@ -18,11 +18,12 @@ function App() {
       console.log(err.message);
     })
   },[])
+  console.log(posts);
   return (
     <div className="App">
       
       <div className="app__header">
-        <h1>Bittel Project</h1>
+        <h1>Instagram Project</h1>
         {/* eslint-disable-next-line */}
         <Login_User />
       </div>
@@ -38,7 +39,6 @@ function App() {
              comment_content={post.comment_content}
              post_id={post.id}
              />
-             
           )
       }
       

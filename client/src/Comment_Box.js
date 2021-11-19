@@ -15,7 +15,6 @@ class Comment_Box extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log(this.state.text);
         let formData = new FormData();
         formData.append('text', this.state.text);
         formData.append('post_id', this.state.post_id);
